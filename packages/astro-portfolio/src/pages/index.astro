@@ -1,0 +1,81 @@
+---
+import Base from "../layouts/base.astro";
+import Hero from '@components/Hero.svelte';
+import Grid from '@components/Grid.svelte';
+import Section from "@components/Section.svelte";
+import Heading from "@components/Heading.svelte";
+import List from '@components/Section.svelte';
+import src from '@assets/face-2.gif?url';
+
+import uwhBrand from '@assets/brandboard.png?url';
+import uwh from '@assets/uwh-org.jpg?url';
+import smph from '@assets/smph.jpg?url';
+---
+
+<Base>
+  <Hero title="Chris Lee" image={src}></Hero>
+  <Section id="work" class="section" classes={{ Heading: 'work-heading'}}>
+    <div class="work-heading-container">
+      <Heading class="work-heading">Work</Heading>
+    </div>
+    <Section id="branding" class="uwh-branding">
+      <Grid class="grid">
+        <figure class="wide-image">
+          <img src={uwh} alt="uwhealth.org homepage">
+        </figure>
+        <figure class="wide-image">
+          <img src={smph} alt="UW School of medicine and public health homepage">
+        </figure>
+        <figure class="wide-image">
+          <img src={uwhBrand} alt="Set of pages from the UW Health brand guideline">
+        </figure>
+      </Grid>
+    </Section>
+  </Section>
+
+  <style lang="scss" is:global>
+     @use '@components/styles/variables' as g;
+     @import '@components/styles/functions.scss';
+
+     .grid {
+      width: 100%;
+      position: relative;
+     }
+
+     .wide-image {
+      grid-column: one/r-gutter-start;
+      padding-block: 2rem;
+     }
+
+     img {
+      max-width: 100%;
+      display: block;
+     }
+
+     .section {
+      position: relative;
+      background-color: color('bg', 'light');
+      padding-block: 5rem;
+     }
+
+     .work-heading-container {
+      max-width: 99vw;
+     }
+
+    .work-heading {
+      font-size: fluid-type(g.$type-fs-5-min, g.$type-fs-6-max);
+      line-height: .5;
+      max-width: 100%;
+      color: g.$c-highlight;// mix(g.$c-bg, g.$c-tertiary, 50%);
+      font-variation-settings: 'wght' 800;
+      white-space: nowrap;
+      height: .75em;
+      margin-bottom: rems(g.$type-fs-6-min * -.1);
+      margin-top: rems(g.$base-space-unit * -.5);
+      transform: scale(1.5);
+      transform-origin: 7% 25%;
+    }
+  </style>
+</Base>
+
+

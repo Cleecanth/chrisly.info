@@ -1,0 +1,20 @@
+%grid-reset {
+  grid-column: 1/-1;
+  display: grid;
+}
+
+%grid-inherit {
+  @extend %grid-reset;
+  grid-template-rows: inherit;
+  grid-template-columns: inherit;
+}
+
+%grid-c-inherit {
+  @extend %grid-reset;
+  grid-template-columns: inherit;
+}
+
+%grid-r-inherit {
+  @extend %grid-reset;
+  grid-template-rows: inherit;
+}

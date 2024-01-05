@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#F2F2F0" />
+  <rect x="8" y="8" width="24" height="18" fill="#46F2AA"/>
+  <rect width="24" height="8" x="8" fill="#d0f3e2" />
+  <!-- <defs>
+  	<style>
+      @media (prefers-color-scheme:dark){:root{filter:invert(100%)}}
+    </style>
+  </defs> -->
+</svg>

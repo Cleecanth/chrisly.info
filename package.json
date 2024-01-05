@@ -1,0 +1,6 @@
+{
+    "name": "chrisly-info",
+    "workspaces":[
+        "packages/*"
+    ]
+}

@@ -1,0 +1,9 @@
+@use 'functions.scss' as *;
+
+:root,
+html {
+  font-family: 'Rustica', 'Helvetica', 'Arial', sans-serif;
+  @include fluid-type(16, 24, 320, 1888);
+  color: var(--color-type);
+  min-height: 0vw;
+}

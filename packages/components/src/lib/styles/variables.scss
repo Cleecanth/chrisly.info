@@ -1,0 +1,110 @@
+@use 'sass:math';
+
+$monospace-font-stack: (
+  'Consolas',
+  'Andale Mono WT',
+  'Andale Mono',
+  'Lucida Console',
+  'Lucida Sans Typewriter',
+  'DejaVu Sans Mono',
+  'Bitstream Vera Sans Mono',
+  'Liberation Mono',
+  'Nimbus Mono L',
+  'Monaco',
+  'Courier New',
+  'Courier',
+  monospace
+);
+
+$base-font-size: 16px;
+$base-line-height: 24px;
+$base-space-unit: $base-line-height;
+$horizontal-space: $base-line-height;
+$vertical-space: $base-line-height;
+
+$base-diff: math.div(16, 24);
+
+$type-fs--1: (14, 17 * $base-diff);
+$type-lh--1: 32;
+$type-fs-0: (16, 24 * $base-diff);
+$type-lh-0: 36;
+$type-fs-1: (22, 34 * $base-diff);
+$type-lh-1: 40.5;
+$type-fs-2: (31, 49 * $base-diff);
+$type-lh-2: 54;
+$type-fs-3: (45, 70 * $base-diff);
+$type-lh-3: 76.5;
+$type-fs-4: (63, 100 * $base-diff);
+$type-lh-4: 99;
+$type-fs-5: (90, 143 * $base-diff);
+$type-lh-5: 126;
+$type-fs-6: (120, 300 * $base-diff);
+$type-lh-6: 220.5;
+
+$type-fs--1-min: nth($type-fs--1, 1);
+$type-fs-0-min: nth($type-fs-0, 1);
+$type-fs-1-min: nth($type-fs-1, 1);
+$type-fs-2-min: nth($type-fs-2, 1);
+$type-fs-3-min: nth($type-fs-3, 1);
+$type-fs-4-min: nth($type-fs-4, 1);
+$type-fs-5-min: nth($type-fs-5, 1);
+$type-fs-6-min: nth($type-fs-6, 1);
+
+$type-fs--1-max: nth($type-fs--1, 2);
+$type-fs-0-max: nth($type-fs-0, 2);
+$type-fs-1-max: nth($type-fs-1, 2);
+$type-fs-2-max: nth($type-fs-2, 2);
+$type-fs-3-max: nth($type-fs-3, 2);
+$type-fs-4-max: nth($type-fs-4, 2);
+$type-fs-5-max: nth($type-fs-5, 2);
+$type-fs-6-max: nth($type-fs-6, 2);
+
+$c-primary: #141415;
+$c-secondary: #1b1d20;
+$c-tertiary: #273136;
+$c-bg: #f1f2ed;
+$c-highlight: #47f2ab;
+$c-type: $c-secondary;
+$c-links: $c-tertiary;
+
+$selection-background-color: #4dfec1;
+$selection-color: #1d6568;
+$selection-text-shadow: none;
+
+$colors: (
+  'type': (
+    dark: $c-primary,
+    base: $c-secondary,
+    light: $c-tertiary
+  ),
+  'links': (
+    dark: $c-primary,
+    base: $c-secondary,
+    light: $c-tertiary
+  ),
+  'bg': (
+    dark: #f1f2ed,
+    base: $c-bg,
+    light: #fafaf7
+  ),
+  'accent': (
+    dark: #0fc997,
+    base: $c-highlight,
+    light: #27ffc5
+  )
+);
+
+$base-colors: $colors;
+
+$mq-responsive: true;
+$mq-breakpoints: (
+  sm: 416px,
+  md: 800px,
+  lg: 960px,
+  xl: 1312px,
+  xxl: 1696px,
+  xxxl: 1888px
+);
+
+$mq-static-breakpoint: xxl;
+$show-breakpoints: (sm, md, lg, xl, xxl, xxxl);

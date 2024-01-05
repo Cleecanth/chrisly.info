@@ -1,0 +1,141 @@
+@use 'sass:math';
+@use 'variables';
+@forward 'mq.scss';
+
+@function colors($color-name, $tone: 'base', $opacity: 1) {
+  $color-map: variables.$colors;
+
+  @if not map-has-key($color-map, $color-name) {
+    @warn "Color '#{$color-name}' not found in $base-colors map. Returning #f00 instead";
+    @return red;
+  } @else if not map-has-key(map-get($color-map, $color-name), $tone) {
+    @warn "Tone '#{$tone}' not found in #{$color-name}. Returning #f00 instead.";
+    @return red;
+  }
+
+  @if $opacity < 1 {
+    @return rgba(map-get(map-get($color-map, $color-name), $tone), $opacity);
+  }
+
+  @return map-get(map-get($color-map, $color-name), $tone);
+}
+
+@function color($color, $tone: 'base', $opacity: 1) {
+  @return colors($color, $tone, $opacity);
+}
+
+@function px-to-rems($pixels, $base-size: variables.$base-font-size, $em: false) {
+  @if $pixels == 'auto' or $pixels == 'normal' {
+    @return $pixels;
+  }
+
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  //If 0, don't include units
+  @if $pixels == 0px {
+    @return 0;
+  }
+
+  $pixels: math.div($pixels, $base-size) * if($em, 1em, 1rem);
+
+  @return $pixels;
+}
+
+/// @alias px-to-rems
+///
+@function rems($args...) {
+  @return px-to-rems($args...);
+}
+
+@mixin fluid-type($fs-sm, $fs-lg, $w-sm: 768, $w-lg: 1888, $em: false) {
+  @if not(unitless($fs-sm)) {
+    $fs-sm: strip-units($fs-sm);
+  }
+  @if not(unitless($fs-lg)) {
+    $fs-lg: strip-units($fs-lg);
+  }
+  @if not(unitless($w-sm)) {
+    $w-sm: strip-units($w-sm);
+  }
+  @if not(unitless($w-lg)) {
+    $w-lg: strip-units($w-lg);
+  }
+
+  font-size: #{rems($fs-sm, $em: $em)};
+
+  @media (min-width: #{$w-sm * 1px}) {
+    font-size: #{fluid-type($fs-sm, $fs-lg, $w-sm, $w-lg, $em)};
+  }
+
+  @media (min-width: #{$w-lg * 1px}) {
+    font-size: #{rems($fs-lg, $em: $em)};
+  }
+}
+
+@function fluid-type($fs-sm, $fs-lg, $w-sm: mq-index(1), $w-lg: mq-index(-1), $em: false) {
+
+  @if not(unitless($fs-sm)) {
+    $fs-sm: strip-units($fs-sm);
+  }
+  @if not(unitless($fs-lg)) {
+    $fs-lg: strip-units($fs-lg);
+  }
+  @if not(unitless($w-sm)) {
+    $w-sm: strip-units($w-sm);
+  }
+  @if not(unitless($w-lg)) {
+    $w-lg: strip-units($w-lg);
+  }
+
+  @if ($fs-sm == $fs-lg) {
+    @return rems($fs-sm);
+  }
+  // Note: The calc base value (8.75rem) MUST be stated in REM to maintain accessibility */
+    // Where: calc =
+    // min_font_size_in_rem + (max_font_size - min_font_size) *
+    // ((100vw - min_viewport_including_px_unit) / (max_viewport - min_viewport))
+    //
+  @return calc(
+    #{rems($fs-sm, $em: $em)} + #{$fs-lg - $fs-sm} * ((100vw - #{$w-sm * 1px}) / #{($w-lg - $w-sm)})
+  );
+}
+
+/// Remove lengths (`px`, `em`, `rem`, etc.) from a value. Usually a variable.
+/// This is sometimes required because Sass cannot calculate incompatible units (`px * rem` for instance).
+/// @param {Length} $value
+/// @group utils
+@function strip-units($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@function lh-max($lh, $fs) {
+  @return math.div(($lh * variables.$base-diff), $fs);
+}
+
+/// A functional version of the `type-space` mixin.
+/// @group core
+/// @param {List | Number} $multipliers -
+/// Accepts unitless values that get converted to `rem` units which are a multiple of the typographic grid. Can be multiple values, **separated by spaces**, in the case of `margin` or `padding`. `'auto'` is also an acceptable value.
+
+@function type-space($multipliers) {
+  $base: $horizontal-space;
+  $values: ();
+  $multiple-index: 1;
+
+  @each $multiple in $multipliers {
+      // determine if horizontal or vertical
+      $base: if($multiple-index % 2 == 0, variables.$horizontal-space, variables.$vertical-space);
+      // Multiply space-type by multiple
+      $pixel: if($multiple == 'auto', $multiple, $base * $multiple);
+      // Convert to rems
+      $multiple: px-to-rems($pixel);
+      // Move value into list
+      $values: join($values, $multiple, space);
+      // Increase index
+      $multiple-index: $multiple-index + 1;
+  }
+
+  @return $values;
+}

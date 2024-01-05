@@ -1,0 +1,336 @@
+html,
+body {
+  min-height: 100%;
+}
+
+abbr[title],
+dfn[title] {
+  cursor: help;
+}
+
+u,
+ins {
+  text-decoration: none;
+}
+
+ins {
+  border-bottom: 1px solid;
+}
+
+mark {
+  background-color: var(--color-mark);
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary,
+hr {
+  display: block;
+}
+
+a {
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--color-links);
+
+  &:hover,
+  &:focus {
+    color: var(--color-links-hover);
+  }
+
+  &:active {
+    color: var(--color-links-active);
+  }
+
+  &:focus {
+    outline: thin dotted; //normalize browser outlines
+  }
+
+  // Improve readability when focused and also mouse hovered in all browsers.
+
+  &:active,
+  &:hover {
+    outline: 0;
+  }
+}
+
+hr {
+  outline: 1px solid color('bg', dark);
+  height: 0.01px;
+  // @include type-space(margin, 0 0 1);
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+* {
+  font-size: inherit;
+  line-height: inherit;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+// specify the root styles of the document
+
+:root {
+  box-sizing: border-box;
+  cursor: inherit;
+  background-color: white;
+  text-rendering: auto;
+}
+
+html {
+  -ms-overflow-style: -ms-autohiding-scrollbar; // Edge 12+, Internet Explorer 11-
+  overflow-y: scroll; // All browsers without overlaying scrollbars
+  -webkit-text-size-adjust: 100%; // iOS 8+
+  -ms-text-size-adjust: 100%;
+}
+
+audio:not([controls]) {
+  display: none; // Chrome 44-, iOS 8+, Safari 9+
+}
+
+button {
+  overflow: visible; // Internet Explorer 11-
+  -webkit-appearance: button; // iOS 8+
+  text-transform: none;
+}
+
+input {
+  -webkit-border-radius: 0; // iOS 8+
+
+  &[type='button'],
+  &[type='reset'],
+  &[type='submit'] {
+    -webkit-appearance: button; // iOS 8+
+  }
+
+  &[type='number'] {
+    width: auto; // Firefox 36+
+  }
+
+  &[type='search'] {
+    -webkit-appearance: textfield; // Chrome 45+, Safari 9+
+    outline-offset: -2px;
+
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration {
+      -webkit-appearance: none; // Chrome 45+, Safari 9+
+    }
+  }
+}
+
+dialog {
+  border: solid;
+  color: var(--color-type);
+  display: block;
+  height: fit-content;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  width: fit-content;
+}
+
+dialog:not([open]) {
+  display: none;
+}
+
+pre {
+  overflow: auto; // Internet Explorer 11-
+}
+
+progress {
+  display: inline-block; // Internet Explorer 11-, Windows Phone 8.1+
+}
+
+svg:not(:root) {
+  overflow: hidden; // Internet Explorer 11-
+}
+
+[hidden] {
+  display: none; // Internet Explorer 10-
+}
+
+// Remove the tapping delay on clickable elements in all browsers
+
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea,
+[tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+// specify the alignment of media elements
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: baseline;
+}
+
+// specify the inherited color and font of form elements
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+// specify the minimum height of form elements
+
+button,
+[type='button'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='email'],
+[type='month'],
+[type='number'],
+[type='password'],
+[type='reset'],
+[type='search'],
+[type='submit'],
+[type='tel'],
+[type='text'],
+[type='time'],
+[type='url'],
+[type='week'],
+select,
+textarea {
+  min-height: 1.5rem;
+}
+
+// specify the font family of code elements
+
+code,
+kbd,
+pre,
+samp {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+// specify the standard appearance of selects
+
+select {
+  -moz-appearance: none; // Firefox 40+
+  -webkit-appearance: none; // Chrome 45+
+
+  &::-ms-expand {
+    display: none; // Edge 12+, Internet Explorer 11-
+  }
+
+  &::-ms-value {
+    color: currentColor; // Edge 12+, Internet Explorer 11-
+  }
+}
+
+// specify the background color, font color and drop shadow of text selections
+
+::-moz-selection {
+  background-color: var(--color-selection-bg); // required when declaring ::selection
+  color: var(--color-selection-text);
+  text-shadow: var(--shadow-selection);
+}
+
+::selection {
+  background-color: var(--color-selection-bg); // required when declaring ::selection
+  color: var(--color-selection-text);
+  text-shadow: var(--shadow-selection);
+}
+
+button:-moz-focusring,
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+// Remove inner padding and border in Firefox 3+.
+::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+// Fix the cursor style for Chrome's increment/decrement buttons. For certain
+// `font-size` values of the `input`, it causes the cursor style of the
+// decrement button to change from `default` to `text`.
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  height: auto;
+}
+
+// specify the progress cursor of updating elements
+
+[aria-busy='true'] {
+  cursor: progress;
+}
+
+// specify the pointer cursor of trigger elements
+
+[aria-controls] {
+  cursor: pointer;
+}
+
+// specify the unstyled cursor of disabled, not-editable, or otherwise inoperable elements
+
+[aria-disabled],
+[disabled] {
+  cursor: default !important;
+}
+
+// specify the style of visually hidden yet accessible elements
+
+[hidden][aria-hidden='false'] {
+  clip: rect(0 0 0 0);
+  display: inherit;
+  position: absolute;
+
+  &:focus {
+    clip: auto;
+  }
+}

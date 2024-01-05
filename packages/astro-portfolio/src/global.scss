@@ -1,0 +1,16 @@
+@import '@components/styles/resets.scss';
+
+:root,
+html {
+  font-family: 'Rustica', 'Helvetica', 'Arial', sans-serif;
+  // @include fluid-type(16, 24, 320, 1888);
+  color: var(--color-type);
+  min-height: 0vw;
+}
+
+@font-face {
+  font-family: 'Rustica';
+  src: local('Rustica') url('/rustica.woff2') format('woff2'),
+    url('/rustica.woff') format('woff');
+  font-display: swap;
+}

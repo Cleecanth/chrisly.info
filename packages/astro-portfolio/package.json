@@ -1,0 +1,26 @@
+{
+  "name": "astro-portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "prettier --plugin-search-dir . --check . && eslint .",
+    "format": "prettier --plugin-search-dir . --write ."
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^5.0.3",
+    "components": "file:./../components",
+    "astro": "^4.0.9",
+    "svelte": "^4.2.8"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.32",
+    "postcss-preset-env": "^9.3.0",
+    "sass": "^1.69.6"
+  }
+}
