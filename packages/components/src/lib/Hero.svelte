@@ -201,7 +201,7 @@
     background-color: rgba(#fff, .2);
     border-radius: 50%;
     box-shadow: inset -1rem -5px 5rem rgba(#fff, .35);
-    animation: 25s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite alternate;
+    animation: 45s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite alternate;
     animation-name: move-circles;
   }
 
@@ -229,11 +229,11 @@
   @keyframes move-circles {
     from {
       top: -10%;
-      transform: scale(1) rotate(35deg) translateX(5%);
+      transform: scale(1.1) rotate(35deg) translateX(-5%);
     }
     to {
-      top: 10%;
-      transform: scale(.8) rotate(0deg) translateX(-45%);
+      top: calc(10% + 25vh);
+      transform: scale(.8) rotate(0) translate(-150%);
     }
   }
 </style>

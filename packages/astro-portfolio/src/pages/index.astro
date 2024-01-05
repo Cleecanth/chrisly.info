@@ -52,26 +52,27 @@ import smph from '@assets/smph.jpg?url';
       display: block;
      }
 
-     .section {
+    .section {
       position: relative;
       background-color: color('bg', 'light');
       padding-block: 5rem;
-     }
+    }
 
-     .work-heading-container {
+    .work-heading-container {
+      font-size: fluid-type(g.$type-fs-5-min, g.$type-fs-6-max);
       max-width: 99vw;
-     }
+      overflow: hidden;
+      height: calc(1em * 1.2);
+      margin-top: -4rem;
+      margin-bottom: -0.75rem;
+    }
 
     .work-heading {
-      font-size: fluid-type(g.$type-fs-5-min, g.$type-fs-6-max);
-      line-height: .5;
-      max-width: 100%;
+      font-size: 1em;
+      line-height: 1em;
       color: g.$c-highlight;// mix(g.$c-bg, g.$c-tertiary, 50%);
       font-variation-settings: 'wght' 800;
       white-space: nowrap;
-      height: .75em;
-      margin-bottom: rems(g.$type-fs-6-min * -.1);
-      margin-top: rems(g.$base-space-unit * -.5);
       transform: scale(1.5);
       transform-origin: 7% 25%;
     }
