@@ -42,20 +42,24 @@
   header {
     background-color: color('bg');
     min-height: rems(700px);
-    height: 99vh;
+    height: 101vh;
     max-height: rems(1300px);
   }
 
   :global(.grid-wrap) {
     height: 100%;
     grid-auto-rows: min-content;
+
     grid-template-rows:
       [gutter-start] minmax(4rem, 10vh)
       [gutter-end name-start preview-start] 1fr
       [name-end] minmax(1rem, 1fr)
-      minmax(0.5rem, 20vh)
-      [meta-start preview-end] minmax(2rem, 10vh)
-      minmax(3rem, 2fr) minmax(2rem, 1fr) [meta-end];
+        minmax(0.5rem, 20vh)
+      [meta-start] minmax(2rem, 5vh)
+      [preview-end] minmax(2rem, 10vh)
+        minmax(3rem, 2fr)
+        minmax(2rem, 1fr)
+      [meta-end];
     position: relative;
   }
 
